@@ -23,6 +23,8 @@ bool UueOSBPLibrary::GetFiles(TArray<FString>& Files, FString RootFolderFullPath
 {
 	if (RootFolderFullPath.Len() < 1) return false;
 
+	RootFolderFullPath = FPaths::GameContentDir() + RootFolderFullPath;
+
 	FPaths::NormalizeDirectoryName(RootFolderFullPath);
 
 	IFileManager& FileManager = IFileManager::Get();
