@@ -39,8 +39,17 @@ bool UueOSBPLibrary::GetFiles(TArray<FString>& Files, FString RootFolderFullPath
 	}
 
 	FString FinalPath = RootFolderFullPath + "/" + Ext;
-	FileManager.FindFiles(Files, *FinalPath, true, false);
+	FileManager.FindFiles(Files, *FinalPath, true, true);
+
 	return true;
 }
 
+int32 UueOSBPLibrary::GetFileSize(FString RootFolderFullPath) {
+	RootFolderFullPath = FPaths::GameContentDir() + RootFolderFullPath;
 
+	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*RootFolderFullPath)) { return -1; }
+
+	const int32 FileSize = FPlatformFileManager::Get().GetPlatformFile().FileSize(*RootFolderFullPath);
+
+	return FileSize;
+}

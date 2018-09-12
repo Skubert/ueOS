@@ -37,4 +37,7 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "ueOS_Library")
 	static bool GetFiles(TArray<FString>& Files, FString RootFolderFullPath, FString Ext);
+
+	UFUNCTION(BlueprintPure, Category = "ueOS_Library")
+	static int32 GetFileSize(FString RootFolderFullPath);
 };
