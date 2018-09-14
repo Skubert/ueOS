@@ -53,3 +53,111 @@ int32 UueOSBPLibrary::GetFileSize(FString RootFolderFullPath) {
 
 	return FileSize;
 }
+
+bool UueOSBPLibrary::CreateDirectory(FString NewDir)
+{ 
+	IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
+
+	NewDir = FPaths::GameContentDir() + NewDir;
+
+	// Directory Exists? 
+	if (!PlatformFile.DirectoryExists(*NewDir)) { 
+		
+		PlatformFile.CreateDirectory(*NewDir);
+
+		if (!PlatformFile.DirectoryExists(*NewDir)) {
+			return false; 
+		} 
+	} return true; 
+} 
+
+bool UueOSBPLibrary::DeleteFile(FString RootFolderFullPath) {
+
+	RootFolderFullPath = FPaths::GameContentDir() + RootFolderFullPath;
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().DeleteFile(*RootFolderFullPath)) {
+		return false;
+	}
+	return true;
+}
+
+bool UueOSBPLibrary::MoveFile(FString SourceFullPath, FString DestinationFullPath) {
+
+	SourceFullPath = FPaths::GameContentDir() + SourceFullPath;
+	DestinationFullPath = FPaths::GameContentDir() + DestinationFullPath;
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*SourceFullPath)) {
+		return false;
+	}
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().MoveFile(*DestinationFullPath, *SourceFullPath)) {
+		return false;
+	}
+	return true;
+}
+
+bool UueOSBPLibrary::CopyFile(FString SourceFullPath, FString DestinationFullPath) {
+
+	SourceFullPath = FPaths::GameContentDir() + SourceFullPath;
+	DestinationFullPath = FPaths::GameContentDir() + DestinationFullPath;
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*SourceFullPath)) {
+		return false;
+	}
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().CopyFile(*DestinationFullPath, *SourceFullPath)) {
+		return false;
+	}
+	return true;
+}
+
+bool UueOSBPLibrary::DeleteDirectory(FString RootFolderFullPath) {
+
+	RootFolderFullPath = FPaths::GameContentDir() + RootFolderFullPath;
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().DeleteDirectory(*RootFolderFullPath)) {
+		return false;
+	}
+	return true;
+}
+
+bool UueOSBPLibrary::DeleteDirectoryRecursively(FString RootFolderFullPath) {
+
+	RootFolderFullPath = FPaths::GameContentDir() + RootFolderFullPath;
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().DeleteDirectoryRecursively(*RootFolderFullPath)) {
+		return false;
+	}
+	return true;
+}
+
+bool UueOSBPLibrary::CopyDirectoryRecursively(FString SourceFullPath, FString DestinationFullPath, bool Overwrite) {
+
+	SourceFullPath = FPaths::GameContentDir() + SourceFullPath;
+	DestinationFullPath = FPaths::GameContentDir() + DestinationFullPath;
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().CopyDirectoryTree(*DestinationFullPath, *SourceFullPath, Overwrite)) {
+		return false;
+	}
+	return true;
+}
+
+bool UueOSBPLibrary::DoesDirectoryExist(FString RootFolderFullPath) {
+
+	RootFolderFullPath = FPaths::GameContentDir() + RootFolderFullPath;
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().DirectoryExists(*RootFolderFullPath)) {
+		return false;
+	}
+	return true;
+}
+
+bool UueOSBPLibrary::DoesFileExist(FString RootFolderFullPath) {
+
+	RootFolderFullPath = FPaths::GameContentDir() + RootFolderFullPath;
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*RootFolderFullPath)) {
+		return false;
+	}
+	return true;
+}

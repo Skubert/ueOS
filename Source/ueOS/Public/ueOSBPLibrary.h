@@ -40,4 +40,32 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "ueOS_Library")
 	static int32 GetFileSize(FString RootFolderFullPath);
+
+	UFUNCTION(BlueprintCallable, Category = "ueOS_Library")
+	static bool CreateDirectory(FString NewDir);
+
+	UFUNCTION(BlueprintCallable, Category = "ueOS_Library")
+	static bool DeleteFile(FString RootFolderFullPath);
+
+	UFUNCTION(BlueprintCallable, Category = "ueOS_Library")
+	static bool MoveFile(FString SourceFullPath, FString DestinationFullPath);
+
+	UFUNCTION(BlueprintCallable, Category = "ueOS_Library")
+	static bool CopyFile(FString SourceFullPath, FString DestinationFullPath);
+
+	UFUNCTION(BlueprintCallable, Category = "ueOS_Library")
+	static bool DeleteDirectory(FString RootFolderFullPath);
+
+	UFUNCTION(BlueprintCallable, Category = "ueOS_Library")
+	static bool DeleteDirectoryRecursively(FString RootFolderFullPath);
+
+	UFUNCTION(BlueprintCallable, Category = "ueOS_Library")
+	static bool CopyDirectoryRecursively(FString SourceFullPath, FString DestinationFullPath, bool Overwrite);
+
+	UFUNCTION(BlueprintPure, Category = "ueOS_Library")
+	static bool DoesDirectoryExist(FString RootFolderFullPath);
+
+	UFUNCTION(BlueprintPure, Category = "ueOS_Library")
+	static bool DoesFileExist(FString RootFolderFullPath);
 };
+
