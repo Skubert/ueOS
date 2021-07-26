@@ -1,5 +1,5 @@
 # ueOS
-This is a pseudo-operating system mimicing 8-bit style microcomputers mixed with MS-DOS. It's written entirely in Blueprint and as of now has no access to the hard drive.
+This is a pseudo-operating system mimicking 8-bit style microcomputers mixed with MS-DOS. It's written entirely in Blueprint and as of now has no access to the hard drive.
 
 ## Variables
 Variable types supported:
