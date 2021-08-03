@@ -69,6 +69,7 @@ Usage: if {a} ==/!=/</<=/>/>= {b}
 end
 
 Examples:
+
 if %a == 0
 
 print it's zero!
@@ -76,18 +77,19 @@ print it's zero!
 end
 
 ### for
-A loop.
+A loop. The iterator variable MUST be an integer.
 
-Usage: for {start range} to {end range}
+Usage: for {start range} to {end range} on {iterator variable name}
 
 {code here}
 
 end
 
 Examples:
-for 0 to 5
 
-print asdf
+for 0 to 5 on %a
+
+print %a
 
 end
 
